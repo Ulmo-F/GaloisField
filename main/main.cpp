@@ -1,4 +1,4 @@
-#include "SmallPolynomialOverF2.h"
+#include <GF2/SmallPolynomialOverF2.h>
 
 #include <iomanip>
 
@@ -14,6 +14,7 @@ int main()
     std::cout << "X: " << X << std::endl;
     std::cout << "P: " << P << std::endl;
     std::cout << "P^2: " << P*P << std::endl;
+    throw 0;
     SmallPolynomialOverF2 A = X*X*X+X+One;
     SmallPolynomialOverF2 B = X + One;
     std::cout << "A: " << A << std::endl;

@@ -5,10 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "(gdb) Attach",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "${workspaceFolder}/build/main/main",
+            "processId": "387312",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "enter program name, for example ${workspaceFolder}/a.out",
+            "program": "${workspaceFolder}/build/main/main",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -22,6 +37,22 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "Open a core dump(c/c++)",
+            "program": "${workspaceFolder}/build/main/main",
+            "coreDumpPath": "${workspaceFolder}/build/core.${input:coreFileName}",
+            "cwd": "${workspaceFolder}/build",
+            "MIMode": "gdb" // or gdb, if you are using gdb
         }
+    ],
+    "inputs": [
+      {
+        "id": "coreFileName",
+        "type": "promptString",
+        "description": "Enter core file path"
+      }
     ]
 }
