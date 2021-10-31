@@ -48,15 +48,15 @@ FiniteFieldOverF2<pol>& FiniteFieldOverF2<pol>::operator*=(const FiniteFieldOver
     return *this;
 }
 
-template<size_t polo>
-FiniteFieldOverF2<polo>& FiniteFieldOverF2<polo>::operator/=(const FiniteFieldOverF2<polo>& op)
+template<size_t pol>
+FiniteFieldOverF2<pol>& FiniteFieldOverF2<pol>::operator/=(const FiniteFieldOverF2<pol>& op)
 {
     if (op.value == SmallPolynomialOverF2(0))
         throw std::runtime_error("Division by zero");
-    auto truc = SmallPolynomialOverF2(polo);
-    BezoutLeft bez(truc, op.value);
-    // BezoutLeft bez(SmallPolynomialOverF2(polo), op.value);
-    value *= bez.u;
+    auto truc = SmallPolynomialOverF2(pol);
+    Bezout bez(truc, op.value);
+    // BezoutLeft bez(SmallPolynomialOverF2(pol), op.value);
+    value *= bez.v;
     return *this;
 }
 

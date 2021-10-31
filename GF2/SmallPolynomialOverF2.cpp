@@ -10,7 +10,7 @@ void SmallPolynomialOverF2::display(std::ostream &os) const
     // os << "{" << coefs << "} ";
     bool first = true;
     for (int degree = (8*sizeof(size_t)-1); degree >= 0; degree--)
-        if (coefs & (1ul << degree))
+        if (coefs & (1ull << degree))
         {
             if ( ! first) os << " + ";
             if (degree == 0) os << "1";
@@ -39,7 +39,7 @@ SmallPolynomialOverF2& SmallPolynomialOverF2::operator*=(const SmallPolynomialOv
     coefs = 0;
     while (shiftedCoefs && otherShifted)
     {
-        if (otherShifted & 1ul)
+        if (otherShifted & 1ull)
             coefs ^= shiftedCoefs;
         shiftedCoefs <<= 1;
         otherShifted >>= 1;
@@ -114,7 +114,7 @@ std::ostream& operator<<(std::ostream& os, const SmallPolynomialOverF2& pol)
 Division::Division(SmallPolynomialOverF2 a, SmallPolynomialOverF2 b)
     : quotient(0), remainer(a)
 {
-    size_t headOfA = 1ul << a.degree();
+    size_t headOfA = 1ull << a.degree();
     int degreeDiff = a.degree() - b.degree();
     if (degreeDiff < 0)
         return;

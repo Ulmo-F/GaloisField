@@ -14,7 +14,7 @@ int main()
     std::cout << "X: " << X << std::endl;
     std::cout << "P: " << P << std::endl;
     std::cout << "P^2: " << P*P << std::endl;
-    throw 0;
+
     SmallPolynomialOverF2 A = X*X*X+X+One;
     SmallPolynomialOverF2 B = X + One;
     std::cout << "A: " << A << std::endl;
@@ -26,5 +26,6 @@ int main()
     std::cout << "R: " << bez.r << std::endl;
     std::cout << "U: " << bez.u << std::endl;
     std::cout << "V: " << bez.v << std::endl;
+
     return 0;
 }
